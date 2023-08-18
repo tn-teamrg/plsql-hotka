@@ -1,0 +1,22 @@
+
+
+CREATE TYPE Salary_List AS VARRAY (20) OF NUMBER(7,2);
+
+CREATE TABLE Employee_Salaries (
+    EMPNO     NUMBER(4),
+    SALARY    Salary_List);
+
+DECLARE
+
+   SALARY SALARY_List;
+
+BEGIN
+
+   SELECT SALARY
+   INTO SALARY
+   FROM EMPLOYEE_SALARIES
+   WHERE **returns 1 row***...;
+
+  ...
+
+END; 

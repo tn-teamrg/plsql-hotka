@@ -1,0 +1,42 @@
+
+set autocommit off;
+DECLARE
+
+  v_error_count     NUMBER;
+   
+  TYPE EMPNO_TYPE IS TABLE OF EMP.EMPNO%TYPE;
+
+  EMPNO_TABLE EMPNO_TYPE;
+   
+BEGIN
+   
+   SELECT EMPNO  
+   BULK COLLECT into EMPNO_Table
+   FROM EMP;
+
+   DBMS_OUTPUT.PUT_LINE('Nested Table Rows Loaded = ' || EMPNO_Table.COUNT  );
+
+
+    FORALL i IN EMPNO_TABLE.FIRST .. EMPNO_TABLE.LAST SAVE EXCEPTIONS
+       UPDATE EMP set SAL = SAL / 0 WHERE EMPNO = EMPNO_TABLE(i);
+
+EXCEPTION
+    WHEN OTHERS THEN
+       v_error_count := SQL%BULK_EXCEPTIONS.COUNT;
+       DBMS_OUTPUT.PUT_LINE('Errors Encountered = ' || v_error_count);
+       FOR i IN 1..v_error_count 
+       LOOP
+          DBMS_OUTPUT.PUT_LINE('Empno: ' || EMPNO_TABLE(i) || ' ' ||
+              SQL%BULK_EXCEPTIONS(i).ERROR_INDEX || ':' ||
+              SQLERRM(-SQL%BULK_EXCEPTIONS(i).ERROR_CODE) ); 
+       END LOOP;
+       DBMS_OUTPUT.PUT_LINE('EMPNO Not Updated: ');
+       FOR i IN 1..EMPNO_TABLE.COUNT 
+       LOOP
+          IF SQL%BULK_ROWCOUNT(i) = 0 THEN 
+             DBMS_OUTPUT.PUT(EMPNO_TABLE(i) || ' ');
+          END IF;
+       END LOOP;
+       DBMS_OUTPUT.NEW_LINE;
+END;
+/

@@ -1,0 +1,18 @@
+DECLARE
+
+   PROCEDURE my_proc1(vars);
+   PROCEDURE my_proc2(vars);
+   PROCEDURE my_proc1(vars) 
+   IS
+   BEGIN
+      my_proc2(vars);
+   END;
+
+BEGIN
+   
+
+
+
+END;
+/
+

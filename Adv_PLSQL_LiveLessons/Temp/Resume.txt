@@ -1,0 +1,118 @@
+DANIEL CRAIG HOTKA
+	4300 Sheridan Avenue
+	Des Moines, Iowa 50310
+	(515) 279-3361
+	
+DHotka@Earthlink.net - www.DanHotka.com 
+
+OVERVIEW
+
+	29 years IT Experience, strengths:
+		. Managed a Training/Consulting Small Business
+		. Managed 1-day Trade Show Events for User groups
+		. Involved in a variety of $500K & Multi_Million dollar product sales
+		. International Sales Support
+		. Managed a variety of presale activity
+		. Pre and Post Sales Support
+		. Strong Relational DBMS skill set
+		. Author, & Key Note speaker
+		. Data Warehouse Design and Implementation
+		. Application System Design and Implementation
+		. Migration of Applications and Data 
+		. Project Management and Supervision
+		. Classroom Instruction 
+		 
+
+HARDWARE
+
+	Unix (RS6000, HP, SUN), Digital VAX/VMS, IBM 43xx (DOS),
+	ES9000, IBM PC and compatibles; Honeywell Bull Small and Medium Systems, Burroughs Medium Systems, Sperry (UNISYS) 1100/71, LANS (TCP/IP, NFS, 3Com, PCI/SMB) and Communications (between Unix, Unix & PC's, and Unix to IBM Hosts).
+
+SOFTWARE
+
+	Oracle RDBMS (V4.1, V5.1, V6.0, V7.0, V7.1, V7.2, V7.3, V8.0, V8i, V9i, 10g,  Oracle Discoverer v4, v9 & v10, IBM DB2 UDB V5 (Admin & Tuning), WinNT Admin, Sybase System 10 & 11, MS SQL Server 6.0, SQL*Forms 2.3, 3.0, 4.0 & 4.5, 6.0. 6I, Oracle CASE, PL/SQL, SQL*DBA, SQL*Plus, SQL*Reports (Rpt, SRW V1.1 & 2.0),  SQL*Loader, PRO*C, SQL*NET, etc), Microsoft Desktop products, UNIX (shell programming), C, COBOL, IBM DB2 MVS, FOCUS, MAPPER, CICS/VS, TSO/SPF, MS-DOS, RPG II, DMSII, ISAM, FORTE
+
+
+EXPERIENCE
+
+	
+	Author
+	.	Contributing Editor (monthly articles, featured columns) for Oracle Professional by Pinnacle Publications, Exploring Oracle by Element K Journals, and other on-line publications.  
+	.	Oracle SQL Developer Handbook, ISBN: 0-07-148474-4, Oracle Press
+	.	Oracle Database10g Linux Administration, ISBN:0-07-223053-3, Co-author, Oracle Press
+	.	Oracle9i Development by Example, ISBN: 0-7897-2671-8, Que Publications
+	.	TOAD Handbook, ISBN: 0-672-32486-5, Co-author SAMS Publications	
+	.	Oracle8i from Scratch, ISBN: 0-7897-2369-7, Que Publications
+	.	Special Edition Using Oracle8/8i, Co-author SAMS Publishing	
+	.	Oracle Developer Unleashed, Co-author SAMS Publishing
+	.	Oracle8 Server Unleashed, Co-author SAMS Publishing
+	.	Oracle Unleashed, Co-author SAMS Publishing.
+	.	Oracle Unleashed Second Edition, Co-author SAMS Publishing
+	.	Oracle Backup & Recovery July 1998 Select Magazine 
+
+	Training/Consulting Company 
+	.	CEO/Owner: established a LLC company to provide on-site training and consulting services..
+	.	Marketing: promoted sales thru direct and channel sales, managed trade show events, journal advertising
+	.	Sales: Direct calls to prospective/existing clients, managed work-order contracts and collections
+	.	Designed/Developed a series of 2-day and 3-day On-site style computer workshops. 	
+	.	Designed/Developed freeware tools
+	.	Designed/Developed website
+	.	Designed/Developed Employee Certification programs
+	.	Purchased/Installed portable PC lab/wireless Network
+
+	Pre Sales Support 
+	.	Senior Technical Advisor, increased sales through higher level sales presentations, competitive analysis, conference, & technical seminars throughout the world.
+	.	Director of European operations, increased sales through higher level sales presentations, managing training, conference, & technical seminars throughout Europe, South Africa, & the Middle East..
+	.	Presented technical presentations at user groups and conferences around the world. 	
+	.	Developed and presented technical presentations for existing clients and prospects. These presentations demonstrated everything from ORACLE RDBMS and UNIX through LANS, monitoring and support software, PC to UNIX networking, UNIX to UNIX networking, and UNIX to other environments like IBM.
+	.	Experience with a variety of pre-sale activities such as calls on prospects, follow up after presentations, responding to RFP's, porting of prospect's application, locating and porting "third party" applications, and product shows.
+	.	Experience with a variety of vertical markets.
+	.	Developed and managed entire market programs.
+ 
+
+	Post Sales Support
+	.	Installed Hardware, Operating Systems, and Software products.
+	.	Technical assistance to Field Personnel, including Customer Engineers.
+	.	Assisted customers in training and on-site support of purchased products.
+	.	Performed a variety of tasks from Programming to System Administration and Performance Tuning (including Unix Kernel tuning), Oracle tuning, including application system design and implementation.
+
+
+	Strong Relational DBMS skill set
+	.	Very knowledgeable with the SQL language, the Oracle RDBMS & tools, and the IBM DB2 environment.
+	.	Consulted, designed, and developed ORACLE based applications on a variety of UNIX and PC Environments.
+	.	Integrated Oracle RDBMS with other applications including word processing.
+	.	Performed Database Administration functions, including initial installation of the IBM, Oracle & Sybase software.
+	.	Performance Tuning including the operating system, applications and kernel levels.
+	.	Developed and installed "user exits" written in C into Oracle SQL*Forms.
+	.	Evaluated and used compilers for Oracle-based tools.  
+
+
+	Data Warehouse Design and Implementation
+	.	Performed CASE logical to physical object translation. 
+	.	Installed Oracle RDBMS V7.1 for Very Large database support, 
+	.	Implemented a 16gigabyte data warehouse application.
+	.	Evaluated various 3rd party tools to query and evaluate this same data warehouse. 
+	
+
+	Application System Design and Implementation  
+	.	An Applications Expert who can design complete application systems, including Data Warehouse applications, and implement these systems in a variety of environments utilizing an even larger variety of languages and software tools.  
+.	Excellent at debugging application problems, designing system enhancements, and evaluating complete software packages.
+
+	Migration of Applications and Data
+	.	Designed and implemented tools that convert entire applications into Oracle-based applications.
+
+	Project Management and Supervision  
+	.	Have managed design and systems development efforts of consultants and other technical people assigned to my projects.  
+	.	I have been in charge of concurrent and sizable accounting systems involving the development of and modifications to a 120+ library of programs.  
+	.	Supervised consultants and direct reports.  Was involved in the hiring, training, performance reviews, reprimands, and dismissal process.
+ 
+
+	Classroom Training
+	.	2-day and 3-day workshops in/around the Oracle RDBMS product.  Trained managers, programmers, end users, and employees in various current Unix & PC based software, Oracle Usage, Oracle Development, Oracle Administration, Intro to Unix, Advanced Unix, and Unix Administration in a classroom environment.  Developed, marketed, and given specific 1, 2 and  3 day courses.
+
+	
+
+EDUCATION
+
+	University of Iowa, Iowa City, Iowa
+	Kirkwood College, Cedar Rapids, Iowa

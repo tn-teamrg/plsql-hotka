@@ -1,0 +1,33 @@
+DECLARE
+
+   TYPE DNAME_TYPE IS VARRAY(6) OF DEPT%ROWTYPE;              
+
+   DNAME_TABLE  DNAME_TYPE := DNAME_TYPE();
+
+   cursor DEPT_CUR is
+     select * from dept;
+
+BEGIN
+
+--LOAD VARRAY --   
+ For DEPT_REC IN DEPT_CUR 
+   LOOP
+    DNAME_TABLE.EXTEND;
+    DNAME_TABLE(DNAME_TABLE.last) := DEPT_REC;
+   END LOOP;
+
+
+--Lookup VARRAY --
+
+ FOR i IN DNAME_TABLE.first .. DNAME_TABLE.last 
+    LOOP
+    IF DNAME_TABLE(i).DEPTNO = 10 THEN
+      DBMS_OUTPUT.PUT_LINE('Department 10 is ' || 
+                         DNAME_TABLE(i).DName);
+      EXIT;
+    END IF;
+  END LOOP;
+
+END;
+
+

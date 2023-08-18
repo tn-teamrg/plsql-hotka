@@ -1,0 +1,26 @@
+CREATE OR REPLACE PROCEDURE READFILE IS
+   FileID    UTL_FILE.FILE_TYPE;
+   v_text    VARCHAR2(200);
+
+--Example from Oracle Documentation --
+
+BEGIN
+   BEGIN
+       FileID := UTL_FILE.FOPEN('TEMPDIR', 'FILExx.txt', 'R');
+       LOOP
+           BEGIN
+              UTL_FILE.GET_LINE(FileID, v_text);
+              DBMS_OUTPUT.PUT_LINE(v_text); 
+           EXCEPTION
+              WHEN No_Data_Found
+              THEN exit;
+           END;
+       END LOOP;
+       UTL_FILE.FCLOSE(FileID);
+   EXCEPTION
+   END;
+
+END READFILE;
+/
+
+

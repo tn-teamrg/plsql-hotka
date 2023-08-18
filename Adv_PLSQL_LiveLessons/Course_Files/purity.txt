@@ -1,0 +1,9 @@
+CREATE or REPLACE PACKAGE my_pkg AS
+
+   FUNCTION my_func RETURN number;
+   
+   PRAGMA RESTRICT_REFERENCES (my_func, WNDS, RNPS);
+   
+END my_pkg;
+
+

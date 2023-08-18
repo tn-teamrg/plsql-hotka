@@ -1,0 +1,36 @@
+DECLARE
+
+   TYPE EMPNO_TYPE IS TABLE OF
+      Emp.%ROWTYPE            
+      INDEX BY PLS_INTEGER;   
+
+   TYPE Ename_TYPE IS TABLE OF
+      Emp.%ROWTYPE            
+      INDEX BY VARCHAR2;   
+
+   TYPE DNAME_TYPE IS TABLE OF
+      DEPT.DNAME%TYPE              
+      INDEX BY BINARY_INTEGER; 
+
+   TYPE EmpRecTyp IS RECORD 
+      (EName  VARCHAR2(20) := NULL,
+       SAL    NUMBER(7,2) := 0);
+
+   TYPE Emp_Type IS TABLE OF
+      EmpRecType                 
+      INDEX BY BINARY_INTEGER;
+
+   EMPNO_Table  EMPNO_TYPE;
+   Ename_TABLE  Ename_TYPE;
+   DNAME_TABLE  DNAME_TYPE;
+   Emp1_TABLE   Emp_Type;
+   Emp2_TABLE   Emp_Type;
+
+BEGIN
+   
+
+
+
+END;
+/
+

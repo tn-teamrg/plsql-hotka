@@ -1,0 +1,43 @@
+CREATE OR REPLACE PROCEDURE err_b
+IS
+   my_error   EXCEPTION;
+BEGIN
+   RAISE my_error;
+EXCEPTION
+   WHEN my_error
+   THEN
+      PRINT_CALL_STACK;
+      RAISE_APPLICATION_ERROR (-20001, 'Error in ERR_B');
+END err_b;
+/
+
+CREATE OR REPLACE PROCEDURE err_a
+IS
+BEGIN
+   err_b;
+EXCEPTION
+   WHEN OTHERS
+   THEN   
+      RAISE_APPLICATION_ERROR (-20000, 'Error in ERR_A');
+END err_a;
+/
+
+CREATE OR REPLACE PROCEDURE PRINT_CALL_STACK
+IS
+   Depth      pls_integer := UTL_CALL_STACK.Dynamic_Depth();
+BEGIN
+   
+   DBMS_OUTPUT.PUT_LINE ('Lexical   Depth   Line   Name');
+   DBMS_OUTPUT.PUT_LINE ('Depth             Number     ');
+   DBMS_OUTPUT.PUT_LINE ('-------   -----   ------ ----');
+   for i in reverse 1..Depth
+   LOOP
+      DBMS_OUTPUT.Put_Line (
+      rpad(UTL_CALL_STACK.Lexical_Depth(i),10) || rpad(i,7) ||
+      rpad(to_char(UTL_CALL_STACK.Unit_Line(i), '99') , 9) ||
+      UTL_CALL_STACK.Concatenate_Subprogram(UTL_CALL_STACK.Subprogram(i)));
+   END LOOP;      
+ 
+END PRINT_CALL_STACK;
+
+execute err_a;

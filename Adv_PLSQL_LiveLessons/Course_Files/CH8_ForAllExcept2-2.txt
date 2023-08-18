@@ -1,0 +1,29 @@
+
+set autocommit off;
+DECLARE
+
+  v_error_count     NUMBER;
+   
+  TYPE EMPNO_TYPE IS TABLE OF EMP.EMPNO%TYPE;
+
+  EMPNO_TABLE EMPNO_TYPE;
+   
+BEGIN
+   
+   SELECT EMPNO  
+   BULK COLLECT into EMPNO_Table
+   FROM EMP;
+
+   DBMS_OUTPUT.PUT_LINE('Nested Table Rows Loaded = ' || EMPNO_Table.COUNT  );
+
+
+    FORALL i IN EMPNO_TABLE.FIRST .. EMPNO_TABLE.LAST 
+       UPDATE EMP set SAL = SAL / 0 WHERE EMPNO = EMPNO_TABLE(i)
+       LOG ERRORS REJECT LIMIT UNLIMITED;
+
+/*  exec a procedure to process and delete from the ERR$_EMP table */
+
+rollback;
+
+END;
+/

@@ -1,0 +1,84 @@
+PL/SQL Large Objects(LOBs) EXAMPLES 5/15/00
+
+Note:
+These lob examples are available in /rdbms/demo/lobs/plsql for the first time in 
+Oracle8i release 3 (8.1.7). 
+The example scripts, are taken from the "Oracle8i Application Developer's Guide - 
+Large Objects (LOBs)" release 2 (8.1.6). The majority of these examples 
+are based on the multimedia_tab schema. The set up and clean up scripts for 
+these examples are described in the manual at the beginning of chapters 9,10,
+and 11, and can also be found here in the file:
+On UNIX:/rdbms/demo/adlsetup.sql
+On NT: $HOME\demo\adlsetup.sql
+
+
+DOC REF		DEMO NAME	DESCRIPTION
+
+PL/SQL Internal Persistant LOBs Examples from Chapter 9
+* For the "DEMO NAME", the Internal Persistant LOBs examples have a prefix = i
+
+adlp001i	iinsert		inserting a row by initializing lob locator bind variable
+adlp002i	iloaddat	loading a lob with bfile data
+adlp003i	iisopen		seeing if lob is open
+adlp004i	ichkout		checking out a lob
+adlp005i	ichkin		checking in a lob
+adlp006i	idisplay	displaying lob data
+adlp007i	iread		reading data from lob
+adlp008i	ireadprt	reading portion of lob (substr)
+adlp009i	icompare	comparing all or part of lob
+adlp010i	ipattern	seeing if pattern exists in lob (instr)
+adlp011i	ilength		getting the length of a lob
+adlp012i	icopy		copying all or part of a lob to another lob
+adlp013i	icopyloc	copying a lob locator
+adlp014i	iappend		appending one lob to another
+adlp015i	iwriteap	writing to the end of lob (write append)
+adlp016i	iwrite		writing data to a lob
+adlp017i	itrim		trimming lob data
+adlp018i	ierase		erasing part of a lob
+
+PL/SQL Temporary LOBs Examples from Chapter 10
+* For the "DEMO NAME", the Temporary LOBs examples have a prefix = t
+
+adlp019t	tcreate		creating a temporary lob
+adlp020t	tiftemp		seeing if lob is temporary
+adlp021t	tfree		freeing a temp lob
+adlp022t	tloadb		loading a temp lob with data from bfile
+adlp023t	tifopen		seeing if a temporary lob is open
+adlp024t	tdisplay	displaying temporary lob data
+adlp025t	tread		reading data from temporary lob
+adlp026t	treadprt	reading portion of temporary lob (substr)
+adlp027t	tcompare	comparing all or part of two temporary lobs
+adlp028t	tpattern	seeing is a pattern exists in a temporary lob (instr)
+adlp029t	tlength		getting the length of a temporary lob
+adlp030t	tcopy		copying all or part of one temporary lob to another
+adlp031t	tcopyloc	copying lob locator for temporary lob
+adlp032t	tappend		appending one temporary lob to another
+adlp033t	twriteap	writing to the end of a temporary lob (write append)
+adlp034t	twrite		writing data to a temporary lob
+adlp035t	ttrim		trimming temporary lob data
+adlp036t	terase		erasing part of a temporary lob
+
+PL/SQL External LOBs (Bfiles) Examples from Chapter 11
+* For the "DEMO NAME", the External LOBs (bfile) examples have a prefix = f
+
+adlp037f	fclosea		closing all open bfiles
+adlp038f	finsert		inserting a row containing by initializing a bfile locator
+adlp039f	floadlob	loading a lob with bfile data
+adlp040f	ffilopen	opening a bfile with FILEOPEN
+adlp041f	fopen		opening a bfile with OPEN
+adlp042f	ffisopen	seeing if bfile is open with FILEISOPEN
+adlp043f	fisopen		seeing if bfile is open with ISOPEN
+adlp044f	fdisplay	displaying bfile data
+adlp045f	fread		reading data from a bfile
+adlp046f	freadprt	reading portion of bfile data (substr)
+adlp047f	fpattern	seeing if pattern exists (instr) in bfile
+adlp048f	fcompare	comparing all or part of two bfiles
+adlp049f	fexists		seeing if bfile exists
+adlp050f	flength		getting the length of a bfile
+adlp051f	fcopyloc	copying a lob locator for a bfile
+adlp052f	fgetdir		getting bfile directory alias and filename
+adlp053f	fupdate		updating a bfile by initializing bfile locator
+adlp054f	fclose_f	closing a bfile with FILECLOSE
+adlp055f	fclose_c	closing a bfile with CLOSE
+
+***********************

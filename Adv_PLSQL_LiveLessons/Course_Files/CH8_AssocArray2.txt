@@ -1,0 +1,21 @@
+DECLARE
+
+   TYPE DEPT_TYPE IS TABLE OF
+      DEPT%ROWTYPE              
+      INDEX BY BINARY_INTEGER; 
+ 
+   DEPT_TABLE DEPT_TYPE;
+
+BEGIN
+
+   For i IN (SELECT * FROM DEPT) 
+   LOOP
+      DEPT_TABLE(i.DEPTNO) := i;
+   END LOOP;
+   DBMS_OUTPUT.PUT_LINE('Department 10 is ' || 
+                         DEPT_TABLE(10).DName);
+END;
+/
+
+
+

@@ -1,0 +1,8 @@
+SELECT count(*)
+from A, B, C
+WHERE A.STATUS = B.STATUS
+AND   A.B_ID = B.ID
+AND   B.STATUS = 'OPEN'
+AND   B.ID = C.B_ID
+AND   C.STATUS = 'OPEN';
+

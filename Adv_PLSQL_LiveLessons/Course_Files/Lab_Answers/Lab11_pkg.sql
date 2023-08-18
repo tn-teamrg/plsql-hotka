@@ -1,0 +1,48 @@
+CREATE OR REPLACE PACKAGE USER0_pkg IS
+
+TYPE DEPT_TYPE IS TABLE OF
+      DEPT%ROWTYPE              
+      INDEX BY BINARY_INTEGER; 
+ 
+DEPT_TABLE DEPT_TYPE;
+
+PROCEDURE RECORD_LAB_MSG 
+(p_user VARCHAR2, p_date DATE, p_msg VARCHAR2);
+   
+END USER0_pkg;
+/
+
+
+
+CREATE OR REPLACE PACKAGE BODY USER0_pkg IS
+
+
+PROCEDURE RECORD_LAB_MSG 
+(p_user VARCHAR2, p_date DATE, p_msg VARCHAR2)
+IS
+PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+
+INSERT INTO LAB_MSG VALUES (p_user, p_date, p_msg);
+
+COMMIT;
+
+END RECORD_LAB_MSG;
+
+BEGIN
+
+For i IN (SELECT * FROM DEPT) 
+   LOOP
+      DEPT_TABLE(i.DEPTNO) := i;
+   END LOOP;
+
+
+END USER0_pkg;
+/
+
+
+begin
+
+dbms_output.put_line('Package Array Dept 10 is ' || user0_pkg.DEPT_TABLE(10).DName);
+
+end;

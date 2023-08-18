@@ -1,0 +1,94 @@
+
+CREATE or REPLACE PROCEDURE lab62_timer as
+  v_start_time  NUMBER;
+  v_end_time    NUMBER;
+  v_id     user0.emp_info.empno%TYPE;
+  v_row    user0.emp_info%ROWTYPE;
+  
+TYPE EMP_INFO_AA_TYPE IS TABLE OF
+      USER0.EMP_INFO%ROWTYPE              
+      INDEX BY BINARY_INTEGER; 
+   
+EMPNO_AA_Table  EMP_INFO_AA_TYPE;
+
+TYPE EMP_INFO_NT_TYPE IS TABLE OF USER0.EMP_INFO%ROWTYPE;              
+
+EMPNO_NT_TABLE  EMP_INFO_NT_TYPE := EMP_INFO_NT_TYPE();
+
+cursor empInfo_cur is
+   select *
+   from user0.emp_info;
+
+BEGIN
+   
+   DBMS_OUTPUT.PUT_LINE('User0 Timer Starts');
+
+-- LOAD Area --
+   
+   v_start_time := DBMS_UTILITY.GET_TIME;
+
+ --  SELECT * BULK COLLECT INTO EMPNO_AA_TABLE
+  -- FROM user0.emp_info;
+  
+  open empinfo_cur;
+  fetch empinfo_cur bulk collect into EMPNO_AA_Table;
+  close empinfo_cur;
+
+   v_end_time := ( DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Associative Array Load: ' || v_end_time  );
+  
+   v_start_time := DBMS_UTILITY.GET_TIME;
+   
+   
+ --  SELECT * BULK COLLECT INTO EMPNO_NT_TABLE
+ --  FROM user0.emp_info;
+open empinfo_cur;
+ fetch empinfo_cur bulk collect into EMPNO_NT_Table;
+ close empinfo_cur;
+   
+   v_end_time := (DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Nested Table Load: ' || v_end_time  );
+ 
+-- Lookup Area --
+
+  v_start_time := DBMS_UTILITY.GET_TIME;
+   
+   DBMS_OUTPUT.PUT_LINE('Location 1 is ' || 
+       EMPNO_AA_TABLE(1).First_Name || ' ' || EMPNO_AA_TABLE(1).Last_Name );
+   DBMS_OUTPUT.PUT_LINE('Location 100 is ' || 
+          EMPNO_AA_TABLE(100).First_Name || ' ' || EMPNO_AA_TABLE(100).Last_Name );
+   DBMS_OUTPUT.PUT_LINE('Location 1000 is ' || 
+          EMPNO_AA_TABLE(1000).First_Name || ' ' || EMPNO_AA_TABLE(1000).Last_Name );
+   DBMS_OUTPUT.PUT_LINE('Location 10000 is ' || 
+          EMPNO_AA_TABLE(10000).First_Name || ' ' || EMPNO_AA_TABLE(10000).Last_Name );
+   
+   v_end_time := (DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Associative Table Access: ' || v_end_time  );
+ 
+   v_start_time := DBMS_UTILITY.GET_TIME;
+    
+    FOR i IN EMPNO_NT_TABLE.first .. EMPNO_NT_TABLE.last 
+        LOOP
+        IF EMPNO_NT_TABLE(i).EMPNO = 1 THEN
+          DBMS_OUTPUT.PUT_LINE('Location 1 is ' || 
+              EMPNO_NT_TABLE(i).First_Name || ' ' || EMPNO_NT_TABLE(i).Last_Name );
+        END IF;
+        IF EMPNO_NT_TABLE(i).EMPNO = 100 THEN
+              DBMS_OUTPUT.PUT_LINE('Location 100 is ' || 
+                  EMPNO_NT_TABLE(i).First_Name || ' ' || EMPNO_NT_TABLE(i).Last_Name );
+        END IF;
+        IF EMPNO_NT_TABLE(i).EMPNO = 1000 THEN
+              DBMS_OUTPUT.PUT_LINE('Location 1000 is ' || 
+                  EMPNO_NT_TABLE(i).First_Name || ' ' || EMPNO_NT_TABLE(i).Last_Name );
+        END IF;
+        IF EMPNO_NT_TABLE(i).EMPNO = 10000 THEN
+              DBMS_OUTPUT.PUT_LINE('Location 10000 is ' || 
+                  EMPNO_NT_TABLE(i).First_Name || ' ' || EMPNO_NT_TABLE(i).Last_Name );
+        END IF;
+    END LOOP;
+    
+    v_end_time := (DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+    DBMS_OUTPUT.PUT_LINE('Nested Table Access: ' || v_end_time  );
+ 
+ 
+END;

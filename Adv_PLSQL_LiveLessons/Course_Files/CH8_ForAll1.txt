@@ -1,0 +1,60 @@
+
+set autocommit off;
+DECLARE
+  v_start_time  NUMBER;
+  v_end_time    NUMBER;
+  v_loop_begin_sal     NUMBER;
+  v_loop_end_sal       NUMBER;
+  v_forall_begin_sal   NUMBER;
+  v_forall_end_sal     NUMBER;
+   
+TYPE EMPNO_TYPE IS TABLE OF EMP.EMPNO%TYPE;
+
+EMPNO_TABLE EMPNO_TYPE;
+   
+BEGIN
+   
+   v_start_time := DBMS_UTILITY.GET_TIME;
+
+   SELECT EMPNO  
+   BULK COLLECT into EMPNO_Table
+   FROM EMP;
+
+   v_end_time := ( DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Nested Table Load: ' || v_end_time  );
+   DBMS_OUTPUT.PUT_LINE('Nested Table Rows Loaded = ' || EMPNO_Table.COUNT  );
+   DBMS_OUTPUT.PUT_LINE('Update loop ' || EMPNO_Table.COUNT  );
+
+   select sum(sal) INTO v_loop_begin_sal FROM EMP;
+
+   v_start_time := DBMS_UTILITY.GET_TIME;
+   
+   FOR i IN EMPNO_TABLE.FIRST .. EMPNO_TABLE.LAST
+   LOOP
+      update emp set sal = sal * 1.1 where empno = EMPNO_TABLE(i);
+   END LOOP;
+      
+   v_end_time := (DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Update EMP via loop: ' || v_end_time  ); 
+   select sum(sal) INTO v_loop_end_sal FROM EMP;
+   ROLLBACK;
+   select sum(sal) INTO v_forall_begin_sal FROM EMP;
+   v_start_time := DBMS_UTILITY.GET_TIME;
+   
+   FORALL i in EMPNO_TABLE.FIRST .. EMPNO_TABLE.LAST
+       update emp set sal = sal * 1.1 where empno = EMPNO_TABLE(i);
+    
+   v_end_time := (DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Update EMP via ForAll: ' || v_end_time  );
+
+   select sum(sal) INTO v_forall_end_sal FROM EMP;
+
+   DBMS_OUTPUT.PUT_LINE('Loop Begin Salary : ' || v_loop_begin_sal  );
+   DBMS_OUTPUT.PUT_LINE('Loop End Salary: ' || v_loop_end_sal  );
+   DBMS_OUTPUT.PUT_LINE('FORALL Begin Salary : ' || v_forall_begin_sal  );
+   DBMS_OUTPUT.PUT_LINE('FORALL End Salary: ' || v_forall_end_sal  );
+  
+   ROLLBACK;
+
+END;
+/

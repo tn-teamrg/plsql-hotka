@@ -1,0 +1,44 @@
+
+CREATE or REPLACE PROCEDURE BulkCollect as
+  v_start_time  NUMBER;
+  v_end_time    NUMBER;
+   
+TYPE EMP_INFO_AA_TYPE IS TABLE OF
+      USER0.EMP_INFO%ROWTYPE              
+      INDEX BY BINARY_INTEGER; 
+   
+EMPNO_AA_Table  EMP_INFO_AA_TYPE;
+
+TYPE EMP_INFO_NT_TYPE IS TABLE OF USER0.EMP_INFO%ROWTYPE;              
+
+BEGIN
+   
+   DBMS_OUTPUT.PUT_LINE('User0 Timer Starts');
+
+   v_start_time := DBMS_UTILITY.GET_TIME;
+
+   SELECT * 
+   BULK COLLECT into EMPNO_AA_Table
+   FROM user0.emp_info;
+
+   v_end_time := ( DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Associative Array Load: ' || v_end_time  );
+   
+   DBMS_OUTPUT.PUT_LINE('Associative Array Rows Loaded = ' || EMPNO_AA_Table.COUNT  );
+     
+   v_start_time := DBMS_UTILITY.GET_TIME;
+   
+   DBMS_OUTPUT.PUT_LINE('Location 1 is ' || 
+       EMPNO_AA_TABLE(1).First_Name || ' ' || EMPNO_AA_TABLE(1).Last_Name );
+   DBMS_OUTPUT.PUT_LINE('Location 100 is ' || 
+          EMPNO_AA_TABLE(100).First_Name || ' ' || EMPNO_AA_TABLE(100).Last_Name );
+   DBMS_OUTPUT.PUT_LINE('Location 1000 is ' || 
+          EMPNO_AA_TABLE(1000).First_Name || ' ' || EMPNO_AA_TABLE(1000).Last_Name );
+   DBMS_OUTPUT.PUT_LINE('Location 10000 is ' || 
+          EMPNO_AA_TABLE(10000).First_Name || ' ' || EMPNO_AA_TABLE(10000).Last_Name );
+   
+   v_end_time := (DBMS_UTILITY.GET_TIME - v_start_time) / 100;
+   DBMS_OUTPUT.PUT_LINE('Associative Table Access: ' || v_end_time  ); 
+ 
+END;
+/

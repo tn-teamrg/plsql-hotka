@@ -1,0 +1,7 @@
+   
+BEGIN
+   
+   DBMS_ERRLOG.create_error_log (dml_table_name => 'EMP',
+                                 skip_unsupported => TRUE);
+END;
+/

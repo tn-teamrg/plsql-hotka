@@ -1,0 +1,27 @@
+
+
+CREATE TYPE Salary_List AS TABLE OF NUMBER(7,2);
+
+CREATE TABLE Employee_Salaries (
+    EMPNO     NUMBER(4),
+    SALARY    Salary_List)
+    NESTED TABLE SALARY STORE AS SALARY_TABLE;
+
+
+
+
+DECLARE
+
+   SALARY SALARY_List;
+
+BEGIN
+
+   SELECT CAST(MULTISET(SELECT SALARY_LIST 
+                        from EMPLOYEE_SALARIES
+                        where EMPNO = 1111) as SALARY_List)
+   INTO SALARY
+   FROM EMPLOYEE_SALARIES;
+
+  ...
+
+END; 
